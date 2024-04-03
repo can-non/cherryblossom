@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redirector</title>
+    <script>
+      function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+          var pair = vars[i].split("=");
+          if (pair[0] == variable) {
+            return pair[1];
+          }
+        }
+        return false;
+      }
+
+      var redirectUrl = getQueryVariable("url");
+      if (redirectUrl) {
+        window.location.replace(decodeURIComponent(redirectUrl));
+      } else {
+        window.location.replace("https://example.com"); // Default URL
+      }
+    </script>
+  </head>
+  <body>
+    <p>If you are not redirected automatically, please click <a href="">here</a>.</p>
+  </body>
+</html>
